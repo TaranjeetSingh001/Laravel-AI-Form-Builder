@@ -1,26 +1,49 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
-export default function Dashboard() {
+export default function Dashboard({ auth, stats }) {
+
     return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                    Dashboard
-                </h2>
-            }
-        >
+
+        <AuthenticatedLayout user={auth.user}>
+
             <Head title="Dashboard" />
 
-            <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                            You're logged in!
-                        </div>
+            <div className="p-8">
+
+                <h1 className="text-3xl font-bold">
+                    AI Form Builder
+                </h1>
+
+                <div className="grid grid-cols-3 gap-6 mt-8">
+
+                    <div className="bg-white rounded shadow p-6">
+                        <h2>Total Forms</h2>
+                        <p className="text-4xl">
+                            {stats.totalForms}
+                        </p>
                     </div>
+
+                    <div className="bg-white rounded shadow p-6">
+                        <h2>AI Forms</h2>
+                        <p className="text-4xl">
+                            {stats.aiForms}
+                        </p>
+                    </div>
+
+                    <div className="bg-white rounded shadow p-6">
+                        <h2>Responses</h2>
+                        <p className="text-4xl">
+                            {stats.responses}
+                        </p>
+                    </div>
+
                 </div>
+
             </div>
+
         </AuthenticatedLayout>
+
     );
+
 }
