@@ -29,4 +29,19 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function forms()
+{
+    return $this->hasMany(Form::class);
+}
+
+public function aiGenerations()
+{
+    return $this->hasMany(AiGeneration::class);
+}
+
+public function imports()
+{
+    return $this->hasMany(Import::class);
+}
 }
