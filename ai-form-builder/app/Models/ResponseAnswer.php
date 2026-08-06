@@ -7,32 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class ResponseAnswer extends Model
 {
     protected $fillable = [
-    'form_id',
-    'submitted_by',
-    'ip_address',
-    'user_agent',
-    'submitted_at'
-];
-
-protected function casts(): array
-{
-    return [
-        'submitted_at' => 'datetime',
+        'response_id',
+        'field_id',
+        'answer',
     ];
-}
 
-public function form()
-{
-    return $this->belongsTo(Form::class);
-}
+    public function response()
+    {
+        return $this->belongsTo(FormResponse::class, 'response_id');
+    }
 
-public function user()
-{
-    return $this->belongsTo(User::class, 'submitted_by');
-}
-
-public function answers()
-{
-    return $this->hasMany(ResponseAnswer::class, 'response_id');
-}
+    public function field()
+    {
+        return $this->belongsTo(FormField::class, 'field_id');
+    }
 }

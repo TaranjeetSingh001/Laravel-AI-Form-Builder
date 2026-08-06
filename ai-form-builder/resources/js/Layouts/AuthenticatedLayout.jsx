@@ -30,6 +30,24 @@ export default function AuthenticatedLayout({ header, children }) {
                                 >
                                     Dashboard
                                 </NavLink>
+                                <NavLink
+                                    href={route('forms.index')}
+                                    active={route().current('forms.*')}
+                                >
+                                    Forms
+                                </NavLink>
+                                <NavLink
+                                    href={route('ai.index')}
+                                    active={route().current('ai.*')}
+                                >
+                                    AI Generator
+                                </NavLink>
+                                <NavLink
+    href={route("imports.index")}
+    active={route().current("imports.*")}
+>
+    Import Form
+</NavLink>
                             </div>
                         </div>
 

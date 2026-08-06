@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateFormRequest extends FormRequest
+class GenerateAIRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -15,11 +15,12 @@ class UpdateFormRequest extends FormRequest
     {
         return [
 
-            'title' => 'required|string|max:255',
-
-            'description' => 'nullable|string',
-
-            'status' => 'required|in:draft,published',
+            'prompt'=>[
+                'required',
+                'string',
+                'min:20',
+                'max:5000'
+            ]
 
         ];
     }
